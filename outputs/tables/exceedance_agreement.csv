@@ -1,0 +1,10 @@
+a,b,jaccard
+flag_naive,flag_naive,1
+flag_naive,flag_ears,0.3
+flag_naive,flag_nb,0.1
+flag_ears,flag_naive,0.3
+flag_ears,flag_ears,1
+flag_ears,flag_nb,0.09090909090909091
+flag_nb,flag_naive,0.1
+flag_nb,flag_ears,0.09090909090909091
+flag_nb,flag_nb,1

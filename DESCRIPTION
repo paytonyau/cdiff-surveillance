@@ -1,0 +1,37 @@
+Package: cdiffsurveillance
+Type: Compendium
+Title: Reproducible Descriptive Surveillance of C. difficile Infection in England
+Version: 0.1.0
+Authors@R: person("Payton", "Yau", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3283-0370"))
+Description: A research compendium (not an installable package) that downloads UKHSA monthly
+    mandatory C. difficile surveillance files, harmonises several spreadsheet layouts into one
+    tidy dataset with automated quality checks, and produces descriptive, seasonal,
+    exceedance and data-revision analyses with a rendered report.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+Imports:
+    data.table,
+    dplyr,
+    ggplot2,
+    ggrepel,
+    knitr,
+    lubridate,
+    MASS,
+    patchwork,
+    purrr,
+    ragg,
+    readODS,
+    readr,
+    readxl,
+    rmarkdown,
+    scales,
+    slider,
+    stringr,
+    tibble,
+    tidyr,
+    yaml
+Suggests:
+    testthat (>= 3.0.0),
+    withr
+Config/testthat/edition: 3

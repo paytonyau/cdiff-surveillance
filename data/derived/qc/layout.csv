@@ -1,0 +1,82 @@
+file_id,sheet,all_sheets,header_row,n_rows,missing_required,missing_optional,extra_cols
+CDI_2019-04_2020-04,data,caveats; monthly_table; data,1,25753,,icb; region name,collection
+CDI_2019-05_2020-05,data,caveats; monthly_table; data,1,25753,,icb; region name,collection; stp
+CDI_2019-06_2020-06,data,caveats; monthly_table; data,1,25753,,icb; region name,collection; stp
+CDI_2019-07_2020-07,data,caveats; monthly_table; data,1,25753,,icb; region name,collection; stp
+CDI_2019-08_2020-08,data,caveats; monthly_table; data,1,25753,,icb; region name,collection; stp
+CDI_2019-09_2020-09,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2019-10_2020-10,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2019-11_2020-11,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2019-12_2020-12,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2020-01_2021-01,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2020-02_2021-02,data,caveats; monthly_table; data,1,25389,,icb; region name,collection; stp
+CDI_2020-03_2021-03,data,caveats; monthly_table; data,1,25207,,icb; region name,collection; stp
+CDI_2020-04_2021-04,data,caveats; monthly_table; data,1,25207,,icb; region name,collection; stp
+CDI_2020-05_2021-05,data,caveats; monthly_table; data,1,25207,,icb; region name,collection; stp
+CDI_2020-06_2021-06,data,caveats; monthly_table; data,1,22477,,icb; region name,collection; stp
+CDI_2020-07_2021-07,data,caveats; monthly_table; data,1,22477,,icb; region name,collection; stp
+CDI_2019-04_2020-03,data,caveats; monthly_table; data,1,20748,,icb; region name,collection; stp
+CDI_2020-08_2021-08,data,caveats; monthly_table; data,1,22477,,icb; region name,collection; stp
+CDI_2020-09_2021-09,data,caveats; monthly_table; data,1,22477,,icb; region name,collection; stp
+CDI_2020-10_2021-10,data,caveats; monthly_table; data,1,22477,,icb,collection; stp
+CDI_2020-11_2021-11,data,caveats; monthly_table; data,1,22477,,icb,collection; stp
+CDI_2020-12_2021-12,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-01_2022-01,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2020-04_2021-03,data,caveats; monthly_table; data,1,20664,,icb,collection; stp
+CDI_2021-02_2022-02,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-03_2022-03,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-04_2022-04,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-05_2022-05,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-06_2022-06,data,caveats; monthly_table; data,1,22386,,icb,collection; stp
+CDI_2021-07_2022-07,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2021-08_2022-08,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2021-09_2022-09,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2021-10_2022-10,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2021-11_2022-11,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2021-12_2022-12,data,caveats; monthly_table; data,1,22295,,icb,collection; stp
+CDI_2022-01_2023-01,data,caveat; monthly_table; data,1,22295,,,collection
+CDI_2022-02_2023-02,data,caveats; monthly_table; data,1,22295,,,collection
+CDI_2022-03_2023-03,data,caveats; monthly_table; data,1,22295,,,collection
+CDI_2022-04_2023-04,data,caveats; monthly_table; data,1,22204,,,collection
+CDI_2022-05_2023-05,data,caveats; monthly_table; data,1,22204,,,collection
+CDI_2022-06_2023-06,data,caveats; monthly_table; data,1,22204,,,collection
+CDI_2022-07_2023-07,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2022-08_2023-08,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2022-09_2023-09,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2022-10_2023-10,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2022-11_2023-11,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2022-04_2023-03,data,caveats; monthly_table; data,1,20412,,,collection
+CDI_2022-12_2023-12,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2023-01_2024-01,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2023-02_2024-02,data,caveats; monthly_table; data,1,22113,,,collection
+CDI_2023-03_2024-03,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-04_2024-04,data,Cover; monthly_table; data,1,22113,,,collection
+CDI_2023-05_2024-05,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-06_2024-06,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-07_2024-07,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-08_2024-08,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-09_2024-09,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-04_2024-03,data,Cover; monthly_table; data,4,20412,,,collection
+CDI_2023-10_2024-10,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-11_2024-11,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2023-12_2024-12,data,Cover; monthly_table; data,4,22113,,,collection
+CDI_2024-01_2025-01,raw_data,Cover; national_data; raw_data,4,22113,,,collection
+CDI_2024-02_2025-02,raw_data,Cover; national_data; raw_data,4,22022,,,collection
+CDI_2024-03_2025-03,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-04_2025-04,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-05_2025-05,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-06_2025-06,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-07_2025-07,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-08_2025-08,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-09_2025-09,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-10_2025-10,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-11_2025-11,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2024-12_2025-12,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-01_2026-01,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-02_2026-02,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-03_2026-03,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-04_2026-04,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-05_2026-05,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-06_2026-06,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-07_2026-07,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,22022,,,collection
+CDI_2025-08_2026-08,Table_2_raw_data,Cover; Table_1_national_data; Table_2_raw_data,4,21931,,,collection

@@ -1,0 +1,7 @@
+Check,Problems,Result
+Layout: required columns present in every file,0,pass
+No duplicate organisation-month-measure within a file,0,pass
+Six components add up to the total,0,pass
+"Trust, Sub-ICB and National totals agree",2,FAIL
+No month missing from the series,0,pass
+No missing counts,0,pass

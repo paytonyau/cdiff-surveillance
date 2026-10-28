@@ -1,0 +1,186 @@
+---
+title: "C. difficile infection in England"
+subtitle: "Descriptive surveillance of UKHSA monthly mandatory reporting, April 2019 onwards"
+author: "Payton Yau"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    css: style.css
+    theme: cosmo
+    toc: true
+    toc_depth: 2
+    toc_float: { collapsed: false }
+    self_contained: true
+    fig_caption: false
+params:
+  results: "data/derived/results.rds"
+  figures: "outputs/figures"
+  demo: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, out.width = "100%")
+r   <- readRDS(params$results)
+k   <- r$key
+fig <- function(name) knitr::include_graphics(normalizePath(file.path(params$figures, paste0(name, ".png"))), rel_path = FALSE)
+tab <- function(x, ...) knitr::kable(x, format = "html", ...)
+n   <- function(x) format(round(x), big.mark = ",", trim = TRUE)
+mon <- function(d) format(d, "%B %Y")
+dir <- function(x, up = "above", down = "below") ifelse(x >= 0, up, down)
+kpi <- function(value, label) sprintf('<div><div class="v">%s</div><div class="l">%s</div></div>', value, label)
+```
+
+```{r demo-banner, results='asis'}
+if (isTRUE(params$demo)) cat('<div class="callout demo">SYNTHETIC DEMONSTRATION. Every number and figure on this page is simulated to preview the report layout. None of it is real surveillance data.</div>')
+```
+
+## Summary
+
+```{r kpis, results='asis'}
+cat('<div class="kpi">',
+    kpi(n(k$last12), "cases, last 12 months"),
+    kpi(sprintf("%+.1f%%", k$vs_baseline_pct), "vs pre-COVID baseline (monthly mean)"),
+    kpi(n(k$last_count), paste("cases in", format(k$last_month, "%b %Y"), "(provisional)")),
+    kpi(r$n_trusts, "NHS acute trusts in the series"),
+    '</div>')
+```
+
+- **Time span.** `r k$n_months` months, `r mon(k$first_month)` to `r mon(k$last_month)`, from `r r$n_trusts` NHS acute trusts in England.
+- **Level.** The last 12 months averaged **`r n(k$last12_mean)` cases per month**, `r abs(round(k$vs_baseline_pct, 1))`% `r dir(k$vs_baseline_pct)` the pre-COVID baseline of `r n(k$baseline_mean)` per month. The series peaked in `r mon(k$peak_month)` (`r n(k$peak_count)` cases).
+- **Unusual months.** `r k$n_flags_nb` months exceeded the rolling negative binomial upper limit and `r k$n_flags_any` months were flagged by at least one of three methods. Flags are prompts to look, not outbreak declarations.
+- **Limits of these data.** Counts are not rates: no bed-day denominator is published alongside them, so trusts and regions are compared with their own history, never ranked against each other. The latest months are provisional and are routinely revised (see *Data quality*).
+
+## Data and methods
+
+**Source.** UKHSA, *C. difficile infection: monthly data by prior trust exposure* (accredited official statistics), Open Government Licence v3.0. Each monthly release is a rolling 13-month file of counts per NHS organisation and onset category, for patients aged 2 and over. The series here starts in April 2019, when the prior-trust-exposure case definitions began; earlier files are not comparable and are not used.
+
+**Assembling one series from many files.** Releases overlap, so each organisation-month is taken from the most recent release that contains it. Differences between releases are measured, not discarded (*Data quality*). The same cases are published under three geographies (NHS acute trust, Sub-ICB, England); this report uses the trust rows only, because summing geographies would double-count.
+
+**Onset categories.** Cases are classified by where infection began and its healthcare association: hospital-onset healthcare-associated (HOHA), community-onset healthcare-associated (COHA), community-onset indeterminate (COIA), community-onset community-associated (COCA), plus a small number with unknown or missing information. Cases are attributed to the trust whose laboratory processed the specimen, which may not be where the infection was acquired.
+
+**Exceedance.** Three simple baselines are compared, each using only information available before the month in question: (1) the mean plus two standard deviations of all earlier months; (2) EARS C2, the mean plus three standard deviations of a seven-month baseline that ends three months earlier; (3) a rolling negative binomial regression with a linear trend and an annual harmonic, fitted to the previous 36 months with the COVID-19 disruption window left out, flagging counts above its 97.5th percentile.
+
+## Trend
+
+```{r f1}
+fig("01_overview")
+```
+
+```{r annual}
+tab(r$tables$annual_financial, align = "lrrrrr", caption = "Cases by NHS financial year (April to March). Percentages show change on the previous complete year. * = incomplete year.")
+```
+
+## Where infections start
+
+```{r f2}
+fig("02_composition_counts")
+```
+
+```{r f3}
+fig("03_composition_share")
+```
+
+## Seasonality
+
+```{r f4}
+fig("04_seasonal_heatmap")
+```
+
+```{r f5}
+fig("05_stl_decomposition")
+```
+
+## Regions and trusts
+
+Counts depend on how large a trust or region is, so these figures compare each with **its own** pre-COVID baseline rather than with each other.
+
+```{r f6}
+fig("06_region_index")
+```
+
+```{r f7}
+fig("07_trust_index")
+```
+
+```{r t7}
+tab(r$tables$trust_index, caption = "Trusts furthest above and below their own baseline. Rate ratio = cases per month in the last 12 months divided by cases per month in the baseline period.")
+```
+
+```{r f8}
+fig("08_trust_small_multiples")
+```
+
+```{r f10, out.width="78%"}
+fig("10_trust_distribution")
+```
+
+```{r f11, out.width="55%"}
+fig("11_concentration")
+```
+
+## Exceedance
+
+```{r f9}
+fig("09_exceedance")
+```
+
+```{r ex}
+s <- r$tables$exceedance_summary
+names(s) <- c("Method", "Months flagged", "Outside COVID window", "First flag", "Last flag")
+tab(s, caption = "Flags by method (months with enough history only).")
+```
+
+```{r flags}
+fl <- r$tables$exceedance_flags
+if (nrow(fl)) tab(utils::head(fl, 25), caption = "Months flagged by at least one method (most recent first).") else cat("No months were flagged.")
+```
+
+<div class="callout warn">The three methods disagree on purpose: they answer slightly different questions, and their disagreement is information. A month flagged by all three deserves a look; a month flagged by one usually does not. Months inside the COVID-19 window, and the latest three months (provisional), should be read with extra caution.</div>
+
+## Data quality
+
+```{r qc}
+if (!is.null(r$tables$qc)) tab(r$tables$qc, caption = "Automated checks run on every build.") else cat('<p class="small">Quality checks are not available in demonstration mode.</p>')
+```
+
+```{r rev, results='asis'}
+if (!is.null(r$tables$revisions)) {
+  cat("### How much do published counts change?\n\n")
+  cat("Mandatory surveillance counts are revised as laboratories and trusts correct and complete their submissions. The figures below compare every release of a trust-month with its final published value.\n\n")
+}
+```
+
+```{r f13, eval=!is.null(r$tables$revisions)}
+fig("13_revision_by_lag")
+fig("14_revision_national")
+```
+
+```{r t13, eval=!is.null(r$tables$revisions)}
+tab(r$tables$revisions, caption = "Revisions by release lag.")
+```
+
+```{r f12, out.width="80%"}
+fig("12_reporting_coverage")
+```
+
+## Limitations
+
+- **Counts, not rates.** Without bed-day denominators, differences between trusts mix infection risk with size, case-mix and testing practice.
+- **Attribution.** Cases belong to the reporting laboratory's trust, not necessarily where infection was acquired.
+- **Changing trusts.** Mergers change which trusts exist; trust-level histories are not like-for-like across them. Regional and national series are more robust.
+- **Revisions and provisional data.** Recent months are revised after release; real-time flags may disappear and past months may change.
+- **COVID-19 distortion.** March 2020 to June 2021 is unrepresentative of normal seasonality; it is shaded throughout and excluded from model training.
+- **Short baseline.** The consistent prior-trust-exposure definitions give about seven years; seasonal and trend estimates are correspondingly uncertain.
+- **Thresholds are arbitrary.** A flag is a statistical prompt, never evidence of an outbreak, and no individual-level inference is possible from aggregated counts.
+
+## Reproducibility
+
+Everything on this page is regenerated by `Rscript run.R`. Source files, their retrieval dates and checksums are recorded in `data/raw/RETRIEVAL_LOG.csv`; documented data corrections are in `config/corrections.csv`. Report built `r format(r$generated, "%d %B %Y %H:%M")`.
+
+<details><summary>Session information</summary>
+
+```{r session}
+cat(r$sessioninfo, sep = "\n")
+```
+
+</details>

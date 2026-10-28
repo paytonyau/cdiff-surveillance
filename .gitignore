@@ -1,0 +1,24 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+.Rapp.history
+renv/library/
+renv/staging/
+
+# Data that is downloaded or rebuilt by the pipeline (re-create with `Rscript run.R`)
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/RETRIEVAL_LOG.csv
+data/cache/*
+!data/cache/.gitkeep
+
+# Synthetic demo output is never committed
+outputs/demo/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp

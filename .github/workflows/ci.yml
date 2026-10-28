@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::testthat
+          needs: check
+      - name: Run test suite
+        run: Rscript tests/testthat.R
+      - name: Build the demo report (synthetic data) to catch figure/report regressions
+        run: Rscript run.R --demo --dpi=80
+      - uses: actions/upload-artifact@v4
+        with:
+          name: demo-report-synthetic
+          path: outputs/demo/report.html

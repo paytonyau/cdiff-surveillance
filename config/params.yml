@@ -1,0 +1,39 @@
+# Central configuration. Change values here, not in the code.
+project:
+  title: "C. difficile infection surveillance, England"
+  subtitle: "UKHSA monthly mandatory surveillance counts, April 2019 onwards"
+  series_start: "2019-04-01"        # prior-trust-exposure case definitions start here; earlier months are not comparable
+
+paths:
+  raw:       data/raw
+  cache:     data/cache
+  derived:   data/derived
+  reference: data/reference
+  figures:   outputs/figures
+  tables:    outputs/tables
+  sources:   config/sources.csv
+  corrections: config/corrections.csv
+
+parse:
+  version: "1"                      # bump to invalidate the parsed-file cache after changing parsing code
+  workers: 0                        # 0 = use (cores - 1); 1 = sequential
+
+analysis:
+  primary_measure: total            # total | HOHA | COHA | COIA | COCA
+  org_type: "NHS acute trust"       # counts are taken from ONE geography only (the same cases appear again under Sub-ICB)
+  covid_window: ["2020-03-01", "2021-06-01"]
+  baseline_window: ["2019-04-01", "2020-02-01"]   # pre-COVID reference period for index plots
+  ma_window: 3                      # trailing mean, months
+  exceedance:
+    min_history: 24                 # months of history before a flag can be raised
+    naive_k: 2                      # mean + k*SD of all earlier months
+    ears_k: 3                       # EARS C2: mean + k*SD of a 7-month baseline after a 2-month guard band
+    nb_window: 36                   # months used to fit the rolling negative binomial
+    nb_exclude_covid: true          # leave the COVID window out of the NB training data
+    nb_level: 0.975                 # one-sided upper prediction limit
+  index_min_baseline_cases: 30      # trusts with fewer baseline cases are not shown in index plots (too noisy)
+
+figures:
+  width: 9
+  height: 5.5
+  dpi: 300

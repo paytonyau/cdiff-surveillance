@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. The underlying data are UKHSA official statistics (Open Government Licence v3.0) and should be cited to UKHSA."
+title: "cdiff-surveillance: a reproducible pipeline for descriptive surveillance of C. difficile infection in England"
+type: software
+authors:
+  - family-names: Yau
+    given-names: Payton
+    orcid: "https://orcid.org/0000-0002-3283-0370"
+license: MIT
+version: 0.1.0
+date-released: "2026-10-28"
+repository-code: "https://github.com/paytonyau/cdiff-surveillance"
+keywords:
+  - epidemiology
+  - public health surveillance
+  - Clostridioides difficile
+  - healthcare-associated infection
+  - reproducible research
+  - R
